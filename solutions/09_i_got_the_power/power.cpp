@@ -3,14 +3,23 @@
 
 #define N 0x10
 
-int power(int base, int exponent){
+int power(int base, int exponente){
     
-    int exponente=0;
+    int resultado = base;
+    
+    if(base==1)
+	return 1;
+    else{
+	for(int multiplicar=1; multiplicar<exponente; multiplicar++)
+	    resultado *= base;
+	return resultado;
+    }
 }
 
 void fill_in(int list[N]){
 
-
+    for(int guardar=0; guardar<N; guardar++)
+	list[guardar] = guardar+1;
 }
 
 int main(int argc, char *argv[]){
@@ -19,6 +28,10 @@ int main(int argc, char *argv[]){
     int exponente=atoi(argv[1]);
 
     fill_in(list);
-    printf("%i", list[N]);
+    power(list, exponente);
 
+    for(int i=0; i<N; i++)
+	printf("%i \n", list[i]);
+
+    return EXIT_SUCCESS;
 }
