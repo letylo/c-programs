@@ -16,10 +16,10 @@ int power(int base, int exponente){
     }
 }
 
-void fill_in(int list[N]){
+void fill_in(int list[N], int exponente){
 
     for(int guardar=0; guardar<N; guardar++)
-	list[guardar] = guardar+1;
+	list[guardar] = power(guardar+1, exponente);
 }
 
 int main(int argc, char *argv[]){
@@ -27,8 +27,7 @@ int main(int argc, char *argv[]){
     int list[N];
     int exponente=atoi(argv[1]);
 
-    fill_in(list);
-    power(list, exponente);
+    fill_in(list, exponente);
 
     for(int i=0; i<N; i++)
 	printf("%i \n", list[i]);
