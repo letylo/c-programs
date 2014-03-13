@@ -4,12 +4,15 @@
 int main(int argc, char *argv[]){
 
     int lado = 4;
-    char caracter=atoi(argv[1]);
+    char caracter= *argv[1];
 
     for(int fila=0; fila<lado; fila++){
-	for(int colm=0; colm<fila; colm++)
-	    printf("%c", *argv[1]);
+	for(int colm=0; colm<lado; colm++)
+	    if(fila>=colm)
+	    	printf("%c", caracter);
+	    else 
+		printf(" ");
         printf("\n");
     }
     return EXIT_SUCCESS;
-}
+}	

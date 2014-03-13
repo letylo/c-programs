@@ -3,17 +3,18 @@
 
 double add(double op1, double op2){
 
-    return 3.7;
+    double resultado;
+    resultado = op1 + op2;
+    return resultado;
 
 }
 
 int main(int argc, char *argv[]){
 
-    double param1, param2;
+    double param1 = atof(argv[1]);
+    double param2 = atof(argv[2]);
 
-    param1 = param2 = 73.5;
-
-    printf("%.2lf\n", add(param1, param2));
+    printf("%.2lf + %.2lf = %.2lf\n", add(op1, op2));
 
     return EXIT_SUCCESS;
 

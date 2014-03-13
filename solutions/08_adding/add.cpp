@@ -16,7 +16,6 @@ int main(int argc, char *argv[]){
     double resultado = 0;
 
     resultado = add(param1, param2);
-
   
     printf("%.2lf\n", add(param1, param2));
 

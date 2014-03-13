@@ -10,11 +10,13 @@ int main(int argc, char *argv[]){
 	"eggs",
 	"meat",
     };
+
     int palabras=sizeof(list)/8;
+
     for(int veces=0; veces<palabras; veces++)
 	printf("%s \n", list[veces]);
 
-    printf("La lista tiene %i palabras\n", palabras);
+    printf("\nLa lista tiene %i palabras\n", palabras);
 
     return EXIT_SUCCESS;
 }
