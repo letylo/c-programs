@@ -14,8 +14,7 @@ int main(int argc, char *argv[]){
     double param1 = atof(argv[1]);
     double param2 = atof(argv[2]);
 
-    printf("%.2lf + %.2lf = %.2lf\n", add(op1, op2));
+    printf("%.2lf + %.2lf = %.2lf\n", param1, param2, add(param1, param2));
 
     return EXIT_SUCCESS;
-
 }
