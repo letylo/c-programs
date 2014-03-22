@@ -6,17 +6,34 @@
 int main(){
 
     int primes[N];
-    int possible_prime;
-    bool primes_found = false;
-    int divisor;
-
     primes[0] = 2;
+    bool primes_found  = false;
+    int contador=1;
+    int tope;
 
-    for(int possible_prime=0; possible_prime<N; possible_prime++)
-	if(possible_prime % divisor != 0){
-	    primes_found  = true;
-	    possible_prime=primes[N];
-	    printf(" %i\n", primes[N]);	}
+    do{
+
+    for(int possible_prime = 3; possible_prime<tope; possible_prime++){
+
+   	 for(int possible_divisor=2; possible_divisor<possible_prime; possible_divisor++){
+		if(possible_prime % possible_divisor != 0)
+	   	    primes_found = true;
+		else
+		    break;
+    
+        if(primes_found == true){
+        	primes[contador] = possible_prime;
+	        contador++;
+        }
+	
+	}
+
+    }
+    
+    }while(tope<N);
+    
+    printf("%i ", primes[contador]);
+    primes_found = false;
 
     return EXIT_SUCCESS;
 }
