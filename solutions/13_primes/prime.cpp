@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
 
     while(primes_found != N)
 	for(int divisor=2; divisor<possible_prime; divisor++){
-	    possible_prime++
+	    possible_prime++;
 	    for(int possible_prime=3; possible_prime<primes_found; possible_prime++)
 		primes_found++;
 	}

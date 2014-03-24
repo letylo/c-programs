@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <unistd.h>
+#include <string.h>
 
 int suma( int op1, int op2){
 
@@ -12,31 +13,35 @@ int suma( int op1, int op2){
 }
 int main(int argc, char *argv[]){
 
-    int num1 = atoi(argv[1]);
-    int num2 = atoi(argv[2]);
+    int num1 = atoi(argv[2]);
+    int num2 = atoi(argv[3]);
     int aflag = 0;
     int bflag = 0;
     char *cvalue = NULL;
     int index;
     int c;
+    const char *language = NULL;
 
     opterr = 0;
 
-    while((c = getopt (argc, argv, "abc:")) != -1) 
+    while((c = getopt (argc, argv, "abcl:")) != -1) 
 	switch(c)
 	{
 	    case 'a':
 		aflag = 1;
-		if(aflag = 1)
-	           printf("La suma del numero es: %i\n", suma(num1, num2));
 		break;
 	    case 'b':
 		bflag = 1; 
-		if(bflag = 1)
-		   printf("The sum of the number is: %i\n", suma(num1, num2));
 		break;
 	    case 'c':
 		cvalue = optarg;
+		break;
+	    case 'l':
+		language = optarg;
+		if(!strcmp(language, "spanish" ))
+		    printf("El resultado de la suma es: %i \n", suma(num1, num2));
+		if(!strcmp(language, "english"))
+		    printf("The result of operation is: %i \n", suma(num1, num2));
 		break;
 	    case '?':
 		if(optopt == 'c')
