@@ -1,36 +1,28 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define N 0x10
-
-int power(int base, int exponente){
+int power(int base, int exponent){
     
-    int resultado = base;
+    double result = 1;
     
-    if(base==1)
-	return 1;
-    else{
-	for(int multiplicar=1; multiplicar<exponente; multiplicar++)
-	    resultado *= base;
-	return resultado;
-    }
-}
-
-void fill_in(int list[N], int exponente){
-
-    for(int guardar=0; guardar<N; guardar++)
-	list[guardar] = power(guardar+1, exponente);
-}
+    for(int index = 0; index < exponent; index++)
+	 result *= base;
+	
+    return result;
+ }
 
 int main(int argc, char *argv[]){
 
-    int list[N];
-    int exponente=atoi(argv[1]);
+    double base;
+    double exponent;
 
-    fill_in(list, exponente);
+    if (argc < 3)
+	return EXIT_FAILURE;
 
-    for(int i=0; i<N; i++)
-	printf("%i \n", list[i]);
+    base = atof(argv[1]);
+    exponent = atoi(argv[2]);
+
+    printf("%i \n", power(base, exponent));
 
     return EXIT_SUCCESS;
 }
