@@ -6,24 +6,21 @@
 int main(int argc, char *argv[]){
 
     //Crear el array
-    int primes[N];
-    int primes_found=1;
-    int possible_prime = 3;
-    bool divisor = false;
-    primes[0]=2;
+    int primos[N];
+    primos[0]=2;
+    int siguinte_primo;
 
-    while(primes_found != N)
-	for(int divisor=2; divisor<possible_prime; divisor++){
-	    possible_prime++;
-	    for(int possible_prime=3; possible_prime<primes_found; possible_prime++)
-		primes_found++;
-	}
-    if(primes_found==N)
-	primes[possible_prime];
-     
-    //Mostrar por pantalla los numeros primos
-        printf("%i ", primes[possible_prime]);
-    printf("\n");
+    //coger 70 primeros primos
+    //coger un primo y dividirlo por el primo anterior
+    //guardar el primo encontrado en la siguiente celda del array
 
-	return EXIT_SUCCESS;
+    for (int candidato=0; siguiente_primo<N; candidato++){
+         bool es_primo = true;
+
+	 if(siguiente_primo % 
+    }
+
+    
+    return EXIT_SUCCESS;
 }
+
