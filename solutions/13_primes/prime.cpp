@@ -5,22 +5,26 @@
 
 int main(int argc, char *argv[]){
 
-    //Crear el array
     int primos[N];
     primos[0]=2;
-    int siguinte_primo;
+    int siguiente_primo;
+    int primos_anteriores;
 
-    //coger 70 primeros primos
-    //coger un primo y dividirlo por el primo anterior
-    //guardar el primo encontrado en la siguiente celda del array
 
-    for (int candidato=0; siguiente_primo<N; candidato++){
-         bool es_primo = true;
-
-	 if(siguiente_primo % 
+    for (int primos_anteriores=2; primos_anteriores<N; primos_anteriores++){
+	for (int candidato=3; siguiente_primo<N; candidato++){
+	    if (candidato % primos_anteriores != 0){
+		bool es_primo = true;
+		siguiente_primo++;
+		primos[siguiente_primo] = candidato;
+	    }
+	}
     }
 
-    
+    for (int print=0; print<N; print++)
+	printf("%i ", primos[print]); 
+    printf("\n");
+
     return EXIT_SUCCESS;
 }
 
