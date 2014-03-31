@@ -3,8 +3,7 @@
 
 double fraction (double result){
  
-    // result = 1/2==0.5
-    result = 0.5;
+    result = 1. / 2.;
     return result * 10;
 }
 
