@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 //Hacer una pila del tipo TStack.
 //Internamente tiene un array[MAX], tipo char.
 //Tiene un entero que se llama top, que indica la primera posicion libre del array.
@@ -11,32 +12,40 @@
 #define MAX 5 //Definimos el tamaño de la pila
 
 struct TStack{ //Creamos el tipo TStack
-   
+
     char hueco[MAX];
     int top;
 };
 
-void show(){ //Creamos la funcion show, que muestra el contenido de la pila
+void show(struct TStack pila ){ //Creamos la funcion show, que muestra el contenido de la pila
+
+  		
+    for (int i=0; i<pila.top; i++)
+	printf("%c ", pila.hueco[i]);
+    printf("\n");
 
 }
 
-int push(char caracter){ //Creamos la funcion push, guarda lo introducido en la pila
+void push(struct TStack *pila, char caracter){ //Creamos la funcion push, guarda lo introducido en la pila
 
-    scanf("%c", &caracter); 
-    push(caracter);
-
+    (*pila).hueco[(*pila).top++] = caracter; 
 }
 
-int pop(){ //Creamos la funcion pop, que nos devuelve el valor de top
+void pop(const char *puntero){ //Creamos la funcion pop, que nos devuelve el valor de top
+
+    printf("El ultimo caracter introducido es: %c", *puntero);
 }
 
-void menu(int option_menu, char caracter){
+
+int menu_pila(int option_menu, char caracter, struct TStack pila, const char *puntero){
 
     const char *menu[] = {
-	"Introducir una palabra.",
+	"Añadir nuevo elemento a la pila.",
 	"Mostrar el estado de la pila.",
-        "Mostrar el ultimo caracter añadido a la pila."      
+	"Mostrar el ultimo caracter añadido a la pila.",  
+        "Salir."    
     };
+
     system("clear");
     printf("\t\t\nMENU DE LA PILA\n");
 
@@ -46,27 +55,38 @@ void menu(int option_menu, char caracter){
     scanf(" %i", &option_menu);
     option_menu--;
 
-    switch(option_menu){
-	case 0:
-	   	    break;
-	case 1:
-	    show();
-	    break;
-	case 2:
-	    pop();
-	    break;
-    }
+       
+	switch(option_menu){
+	    case 0:
+		printf("Introduce un caracter: ");
+		scanf(" %c", &caracter);
+		puntero = &caracter;
+		push(&pila, caracter);
+		break;
+	    case 1:
+                show(pila);
+		break;
+	    case 2:
+		pop(puntero);
+		break;
+	    case 3:
+		return EXIT_SUCCESS;
+	}
+    menu_pila(option_menu, caracter, pila, puntero);
 
 }
 int main(int argc, char *argv[]){
-   
-    struct TStack pila;
-    char caracter;
-    int option_menu;
 
-    menu(option_menu, caracter);
-  
-    return EXIT_SUCCESS;
-}
+	struct TStack pila;
+	char caracter;
+	int option_menu;
+	const char *puntero;
+
+	pila.top = 0;
+
+	menu_pila(option_menu, caracter, pila, puntero); 
+
+	return EXIT_SUCCESS;
+} 
 
 
