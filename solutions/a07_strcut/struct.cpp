@@ -17,6 +17,8 @@ struct TStack{ //Creamos el tipo TStack
     int top;
 };
 
+enum Menu {poner, mostrar, quitar, salir};
+
 void show(struct TStack pila ){ //Creamos la funcion show, que muestra el contenido de la pila
 
   		
@@ -26,18 +28,19 @@ void show(struct TStack pila ){ //Creamos la funcion show, que muestra el conten
 
 }
 
-void push(struct TStack *pila, char caracter){ //Creamos la funcion push, guarda lo introducido en la pila
+int push(struct TStack *pila, char caracter){ //Creamos la funcion push, guarda lo introducido en la pila
 
     (*pila).hueco[(*pila).top++] = caracter; 
+    return caracter;
 }
 
-void pop(const char *puntero){ //Creamos la funcion pop, que nos devuelve el valor de top
-
-    printf("El ultimo caracter introducido es: %c", *puntero);
+int pop(struct TStack *pila){ //Creamos la funcion pop, que nos devuelve el valor de top
+   return (*pila).hueco[--(*pila).top];
 }
 
+int menu_pila(){
 
-int menu_pila(int option_menu, char caracter, struct TStack pila, const char *puntero){
+    int opcion;
 
     const char *menu[] = {
 	"Añadir nuevo elemento a la pila.",
@@ -46,45 +49,46 @@ int menu_pila(int option_menu, char caracter, struct TStack pila, const char *pu
         "Salir."    
     };
 
-    system("clear");
+    //system("clear");
     printf("\t\t\nMENU DE LA PILA\n");
 
     for (int op_number=0; op_number <sizeof(menu) / sizeof (char *); op_number++)
 	printf("\t\t%i.- %s\n", op_number + 1, menu[op_number]);
 
-    scanf(" %i", &option_menu);
-    option_menu--;
+    printf("\n\tOpcion: ");
 
-       
-	switch(option_menu){
-	    case 0:
-		printf("Introduce un caracter: ");
-		scanf(" %c", &caracter);
-		puntero = &caracter;
-		push(&pila, caracter);
-		break;
-	    case 1:
-                show(pila);
-		break;
-	    case 2:
-		pop(puntero);
-		break;
-	    case 3:
-		return EXIT_SUCCESS;
-	}
-    menu_pila(option_menu, caracter, pila, puntero);
-
+    scanf(" %i", &opcion);
+    return --opcion;
 }
+
 int main(int argc, char *argv[]){
 
 	struct TStack pila;
 	char caracter;
 	int option_menu;
-	const char *puntero;
 
 	pila.top = 0;
 
-	menu_pila(option_menu, caracter, pila, puntero); 
+	while(1) {
+	    option_menu = menu_pila(); 
+	    switch(option_menu){
+		case poner:
+		    printf("Introduce un caracter: ");
+		    scanf(" %c", &caracter);
+		    printf("Acabo de introducir un: %c\n", push(&pila, caracter));
+		    break;
+		case mostrar:
+		    show(pila);
+		    break;
+		case quitar:
+		    printf("Acabo de sacar un: %c\n", pop(&pila));
+		    break;
+		case salir:
+		    return EXIT_SUCCESS;
+	    }
+	    printf("Pulsa una tecla para continuar.");
+	    getchar();
+	}
 
 	return EXIT_SUCCESS;
 } 
