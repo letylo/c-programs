@@ -21,7 +21,7 @@ enum Menu {poner, mostrar, quitar, salir};
 
 void show(struct TStack pila ){ //Creamos la funcion show, que muestra el contenido de la pila
 
-  		
+
     for (int i=0; i<pila.top; i++)
 	printf("%c ", pila.hueco[i]);
     printf("\n");
@@ -47,9 +47,9 @@ int menu_pila(){
 	"Mostrar el estado de la pila.",
 	"Mostrar el ultimo caracter añadido a la pila.",  
         "Salir."    
-    };
+     };
 
-    //system("clear");
+
     printf("\t\t\nMENU DE LA PILA\n");
 
     for (int op_number=0; op_number <sizeof(menu) / sizeof (char *); op_number++)
@@ -59,6 +59,7 @@ int menu_pila(){
 
     scanf(" %i", &opcion);
     return --opcion;
+ 
 }
 
 int main(int argc, char *argv[]){
@@ -69,6 +70,7 @@ int main(int argc, char *argv[]){
 
 	pila.top = 0;
 
+        
 	while(1) {
 	    option_menu = menu_pila(); 
 	    switch(option_menu){
@@ -85,12 +87,13 @@ int main(int argc, char *argv[]){
 		    break;
 		case salir:
 		    return EXIT_SUCCESS;
-	    }
-	    printf("Pulsa una tecla para continuar.");
+ 	    }
+	    system("clear");    
 	    getchar();
-	}
+	    
+ 	}
 
 	return EXIT_SUCCESS;
-} 
+}  
 
 
