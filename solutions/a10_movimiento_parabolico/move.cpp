@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define TIME .1
 struct TCoordenada{
     double x;
     double y;
@@ -25,13 +26,13 @@ int main(int argc, char *argv[]){
 
 	//Calculamos la velocidad
 
-	velocidad.x += aceleracion.x * .1;
-	velocidad.y += aceleracion.y * .1;
+	velocidad.x += aceleracion.x * TIME;
+	velocidad.y += aceleracion.y * TIME;
 
 	//Calculamos la posicion
 
-	punto.x += velocidad.x * .1;
-	punto.y += velocidad.y * .1;
+	punto.x += velocidad.x * TIME;
+	punto.y += velocidad.y * TIME;
 
 	printf("La piedra esta: (%.2lf, %.2lf)\n", punto.x, punto.y);
     }
